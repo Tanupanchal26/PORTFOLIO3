@@ -172,7 +172,7 @@ export default function Home() {
             onClick={() => setIsDark(!isDark)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className={`p-2 rounded transition-all duration-300 ${isDark ? 'bg-white text-black' : 'bg-black text-white'}`}
+            className={`p-2 rounded transition-all duration-300 ${isDark ? 'bg-black text-white' : 'bg-white text-black'}`}
           >
             {isDark ? (
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
