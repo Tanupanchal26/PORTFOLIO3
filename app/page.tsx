@@ -506,17 +506,18 @@ export default function Home() {
             
             <motion.div 
               variants={staggerContainer}
-              className="space-y-6 max-w-4xl mx-auto"
+              className="space-y-4 max-w-3xl mx-auto"
             >
               {/* Deloitte Certificate */}
               <motion.div
                 variants={fadeInUp}
-                className={`flex items-center justify-between p-6 border ${isDark ? 'border-gray-600' : 'border-gray-300'} rounded transition-all duration-300 group`}
+                whileHover={{ scale: 1.02 }}
+                className={`flex items-center justify-between p-4 border ${isDark ? 'border-gray-600' : 'border-gray-300'} rounded transition-all duration-300`}
               >
                 <div className="flex-1">
-                  <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'group-hover:text-gray-300' : 'group-hover:text-gray-700'} transition-colors`}>Technology Job Simulation</h3>
+                  <h3 className={`text-lg font-semibold mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>Technology Job Simulation</h3>
                   <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm mb-1`}>Deloitte Australia</p>
-                  <span className={`${isDark ? 'text-gray-500' : 'text-gray-500'} text-sm`}>2025</span>
+                  <span className={`${isDark ? 'text-gray-500' : 'text-gray-500'} text-xs`}>2025</span>
                 </div>
                 <a
                   href="https://res.cloudinary.com/dazqanb4h/image/upload/v1771257749/DELOITTE_b2xpfz.jpg"
@@ -535,12 +536,13 @@ export default function Home() {
               {/* BCG Certificate */}
               <motion.div
                 variants={fadeInUp}
-                className={`flex items-center justify-between p-6 border ${isDark ? 'border-gray-600' : 'border-gray-300'} rounded transition-all duration-300 group`}
+                whileHover={{ scale: 1.02 }}
+                className={`flex items-center justify-between p-4 border ${isDark ? 'border-gray-600' : 'border-gray-300'} rounded transition-all duration-300`}
               >
                 <div className="flex-1">
-                  <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'group-hover:text-gray-300' : 'group-hover:text-gray-700'} transition-colors`}>GenAI Job Simulation</h3>
+                  <h3 className={`text-lg font-semibold mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>GenAI Job Simulation</h3>
                   <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm mb-1`}>BCG</p>
-                  <span className={`${isDark ? 'text-gray-500' : 'text-gray-500'} text-sm`}>2025</span>
+                  <span className={`${isDark ? 'text-gray-500' : 'text-gray-500'} text-xs`}>2025</span>
                 </div>
                 <a
                   href="https://res.cloudinary.com/dazqanb4h/image/upload/v1771258036/BCG_rjnby0.jpg"
@@ -559,12 +561,13 @@ export default function Home() {
               {/* Google Cloud Certificate */}
               <motion.div
                 variants={fadeInUp}
-                className={`flex items-center justify-between p-6 border ${isDark ? 'border-gray-600' : 'border-gray-300'} rounded transition-all duration-300 group`}
+                whileHover={{ scale: 1.02 }}
+                className={`flex items-center justify-between p-4 border ${isDark ? 'border-gray-600' : 'border-gray-300'} rounded transition-all duration-300`}
               >
                 <div className="flex-1">
-                  <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'group-hover:text-gray-300' : 'group-hover:text-gray-700'} transition-colors`}>Introduction to Generative AI Studio</h3>
+                  <h3 className={`text-lg font-semibold mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>Introduction to Generative AI Studio</h3>
                   <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm mb-1`}>Google Cloud Certified</p>
-                  <span className={`${isDark ? 'text-gray-500' : 'text-gray-500'} text-sm`}>2025</span>
+                  <span className={`${isDark ? 'text-gray-500' : 'text-gray-500'} text-xs`}>2025</span>
                 </div>
                 <a
                   href="https://res.cloudinary.com/dazqanb4h/image/upload/v1771257868/google_s7mgni.jpg"
@@ -583,12 +586,13 @@ export default function Home() {
               {/* AWS Certificate */}
               <motion.div
                 variants={fadeInUp}
-                className={`flex items-center justify-between p-6 border ${isDark ? 'border-gray-600' : 'border-gray-300'} rounded transition-all duration-300 group`}
+                whileHover={{ scale: 1.02 }}
+                className={`flex items-center justify-between p-4 border ${isDark ? 'border-gray-600' : 'border-gray-300'} rounded transition-all duration-300`}
               >
                 <div className="flex-1">
-                  <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'group-hover:text-gray-300' : 'group-hover:text-gray-700'} transition-colors`}>Solutions Architecture Job Simulation</h3>
+                  <h3 className={`text-lg font-semibold mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>Solutions Architecture Job Simulation</h3>
                   <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm mb-1`}>AWS</p>
-                  <span className={`${isDark ? 'text-gray-500' : 'text-gray-500'} text-sm`}>2025</span>
+                  <span className={`${isDark ? 'text-gray-500' : 'text-gray-500'} text-xs`}>2025</span>
                 </div>
                 <a
                   href="https://res.cloudinary.com/dazqanb4h/image/upload/v1771257944/AWS_hnbxzx.jpg"
