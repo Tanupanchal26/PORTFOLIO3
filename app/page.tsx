@@ -366,7 +366,7 @@ export default function Home() {
                 <motion.img
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
-                  src={isDark ? "https://github-readme-activity-graph.vercel.app/graph?username=Tanupanchal26&bg_color=0D1117&color=7C3AED&line=FF6B6B&point=FFFFFF&area=true&hide_border=true" : "https://github-readme-activity-graph.vercel.app/graph?username=Tanupanchal26&bg_color=FFFFFF&color=2F80ED&line=FF6B6B&point=000000&area=true&hide_border=true"}
+                  src={isDark ? "https://github-readme-activity-graph.vercel.app/graph?username=Tanupanchal26&bg_color=000000&color=7C3AED&line=FF6B6B&point=FFFFFF&area=true&hide_border=true" : "https://github-readme-activity-graph.vercel.app/graph?username=Tanupanchal26&bg_color=FFFFFF&color=2F80ED&line=FF6B6B&point=000000&area=true&hide_border=true"}
                   alt="Contribution Graph" 
                   className={`${isDark ? 'border-2 border-black' : 'border border-gray-300'} rounded transition-all duration-300 w-full max-w-5xl h-auto cursor-pointer`}
                 />
