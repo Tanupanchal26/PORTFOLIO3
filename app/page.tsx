@@ -148,7 +148,7 @@ export default function Home() {
                 className={`p-2 rounded transition-all duration-300 group relative ${
                   activeSection === item.id
                     ? isDark ? 'bg-white/20 text-white' : 'bg-black/20 text-black'
-                    : isDark ? 'hover:bg-gray-800 text-gray-400' : 'hover:bg-gray-100 text-gray-600'
+                    : isDark ? 'hover:bg-gray-700 text-gray-400' : 'hover:bg-gray-300 text-gray-600'
                 }`}
               >
                 <svg
