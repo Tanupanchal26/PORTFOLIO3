@@ -258,7 +258,7 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className={`py-20 px-6 ${isDark ? 'bg-gray-900/20' : 'bg-gray-100/50'}`}>
+      <section id="skills" className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
           <motion.div
             variants={staggerContainer}
