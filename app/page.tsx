@@ -109,7 +109,13 @@ export default function Home() {
         className={`fixed top-0 left-0 right-0 z-50 ${isDark ? 'bg-black/90' : 'bg-white/90'} backdrop-blur-sm border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}
       >
         <div className="flex items-center justify-between px-6 py-4">
-          <div className="flex items-center space-x-8">
+          {/* Name on Left */}
+          <div className="text-xl font-bold">
+            Tanya Panchal
+          </div>
+          
+          {/* Navigation Icons in Center */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-8">
             {[
               { id: 'hero', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6', label: 'Home' },
               { id: 'about', icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z', label: 'Profile' },
@@ -147,6 +153,8 @@ export default function Home() {
               </motion.button>
             ))}
           </div>
+          
+          {/* Theme Toggle on Right */}
           <motion.button
             onClick={() => setIsDark(!isDark)}
             whileHover={{ scale: 1.1 }}
