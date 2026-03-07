@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 export default function Home() {
   const [mounted, setMounted] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
+  const [isDark, setIsDark] = useState(true)
 
   useEffect(() => {
     setMounted(true)
@@ -99,17 +100,81 @@ export default function Home() {
   ]
 
   return (
-    <main className="min-h-screen">
+    <main className={`min-h-screen ${isDark ? 'bg-black text-white' : 'bg-white text-black'}`}>
+      {/* Top Menu Bar */}
+      <motion.header
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className={`fixed top-0 left-0 right-0 z-50 ${isDark ? 'bg-black/90' : 'bg-white/90'} backdrop-blur-sm border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}
+      >
+        <div className="flex items-center justify-between px-6 py-4">
+          <div className="flex items-center space-x-8">
+            {[
+              { id: 'hero', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6', label: 'Home' },
+              { id: 'about', icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z', label: 'Profile' },
+              { id: 'skills', icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z', label: 'Tasks' },
+              { id: 'projects', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10', label: 'Projects' },
+              { id: 'github', icon: 'M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.652.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z', label: 'GitHub', fill: true },
+              { id: 'contact', icon: 'M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z', label: 'Email' }
+            ].map((item) => (
+              <motion.button
+                key={item.id}
+                onClick={() => {
+                  const element = document.getElementById(item.id)
+                  if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className={`p-2 rounded-lg transition-all duration-300 group relative ${
+                  activeSection === item.id
+                    ? isDark ? 'bg-green-500/20 text-green-400' : 'bg-green-500/20 text-green-600'
+                    : isDark ? 'hover:bg-gray-800 text-gray-400' : 'hover:bg-gray-100 text-gray-600'
+                }`}
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill={item.fill ? 'currentColor' : 'none'}
+                  stroke={item.fill ? 'none' : 'currentColor'}
+                  viewBox="0 0 24 24"
+                  strokeWidth={item.fill ? 0 : 1.5}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
+                </svg>
+                <span className={`absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 ${isDark ? 'bg-gray-800' : 'bg-gray-700'} text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap`}>
+                  {item.label}
+                </span>
+              </motion.button>
+            ))}
+          </div>
+          <motion.button
+            onClick={() => setIsDark(!isDark)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className={`p-2 rounded-lg transition-all duration-300 ${isDark ? 'bg-gray-800 text-yellow-400' : 'bg-gray-100 text-gray-800'}`}
+          >
+            {isDark ? (
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+              </svg>
+            )}
+          </motion.button>
+        </div>
+      </motion.header>
       {/* Fixed Vertical Sidebar */}
       <motion.nav 
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="fixed left-0 top-0 h-full w-16 bg-black z-50 flex flex-col items-center py-8 shadow-2xl"
+        className={`fixed left-0 top-16 h-full w-16 ${isDark ? 'bg-black' : 'bg-white'} z-40 flex flex-col items-center py-8 shadow-2xl ${isDark ? 'border-r border-gray-800' : 'border-r border-gray-200'}`}
       >
         {/* Name - Vertical */}
         <div className="mb-16 mt-8">
-          <div className="transform -rotate-90 origin-center whitespace-nowrap text-xs text-gray-500 font-medium tracking-wider">
+          <div className={`transform -rotate-90 origin-center whitespace-nowrap text-xs ${isDark ? 'text-gray-500' : 'text-gray-400'} font-medium tracking-wider`}>
             TANYA PANCHAL
           </div>
         </div>
@@ -135,15 +200,15 @@ export default function Home() {
               }}
               className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 group relative ${
                 activeSection === item.id 
-                  ? 'bg-green-500/20 shadow-lg shadow-green-500/20' 
-                  : 'hover:bg-gray-900 hover:shadow-lg'
+                  ? isDark ? 'bg-green-500/20 shadow-lg shadow-green-500/20' : 'bg-green-500/20 shadow-lg shadow-green-500/20'
+                  : isDark ? 'hover:bg-gray-900 hover:shadow-lg' : 'hover:bg-gray-100 hover:shadow-lg'
               }`}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
               <svg
                 className={`w-5 h-5 transition-colors duration-300 ${
-                  activeSection === item.id ? 'text-green-400' : 'text-gray-500 group-hover:text-gray-300'
+                  activeSection === item.id ? 'text-green-400' : isDark ? 'text-gray-500 group-hover:text-gray-300' : 'text-gray-600 group-hover:text-gray-800'
                 }`}
                 fill={item.fill ? "currentColor" : "none"}
                 stroke={item.fill ? "none" : "currentColor"}
@@ -154,7 +219,7 @@ export default function Home() {
               </svg>
               
               {/* Tooltip */}
-              <div className="absolute left-full ml-3 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-50">
+              <div className={`absolute left-full ml-3 px-2 py-1 ${isDark ? 'bg-gray-800' : 'bg-gray-700'} text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-50`}>
                 {item.label}
               </div>
             </motion.button>
@@ -173,12 +238,12 @@ export default function Home() {
                   window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
                 }
               }}
-              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 group relative hover:bg-gray-900 hover:shadow-lg"
+              className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 group relative ${isDark ? 'hover:bg-gray-900 hover:shadow-lg' : 'hover:bg-gray-100 hover:shadow-lg'}`}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
               <svg
-                className="w-5 h-5 transition-colors duration-300 text-gray-500 group-hover:text-gray-300"
+                className={`w-5 h-5 transition-colors duration-300 ${isDark ? 'text-gray-500 group-hover:text-gray-300' : 'text-gray-600 group-hover:text-gray-800'}`}
                 fill={item.fill ? "currentColor" : "none"}
                 stroke={item.fill ? "none" : "currentColor"}
                 viewBox="0 0 24 24"
@@ -188,7 +253,7 @@ export default function Home() {
               </svg>
               
               {/* Tooltip */}
-              <div className="absolute left-full ml-3 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-50">
+              <div className={`absolute left-full ml-3 px-2 py-1 ${isDark ? 'bg-gray-800' : 'bg-gray-700'} text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-50`}>
                 {item.label}
               </div>
             </motion.button>
@@ -197,7 +262,7 @@ export default function Home() {
       </motion.nav>
 
       {/* Main Content with Left Margin */}
-      <div className="ml-16">
+      <div className="ml-16 pt-16">
         {/* Hero Section */}
         <section id="hero" className="min-h-screen flex items-center justify-center px-6">
         <motion.div 
@@ -215,7 +280,7 @@ export default function Home() {
             Hi, I'm Tanya Panchal
           </motion.h1>
           <motion.p 
-            className="text-xl md:text-2xl text-gray-400 mb-8"
+            className={`text-xl md:text-2xl ${isDark ? 'text-gray-400' : 'text-gray-600'} mb-8`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -230,7 +295,7 @@ export default function Home() {
           >
             <a 
               href="#about" 
-              className="inline-block border border-white px-8 py-3 hover:bg-white hover:text-black transition-all duration-300"
+              className={`inline-block border ${isDark ? 'border-white hover:bg-white hover:text-black' : 'border-black hover:bg-black hover:text-white'} px-8 py-3 transition-all duration-300`}
             >
               Learn More
             </a>
@@ -255,7 +320,7 @@ export default function Home() {
             </motion.h2>
             <motion.p 
               variants={fadeInUp}
-              className="text-lg md:text-xl leading-relaxed text-gray-400 text-center max-w-3xl mx-auto mb-12"
+              className={`text-lg md:text-xl leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'} text-center max-w-3xl mx-auto mb-12`}
             >
               I am a passionate Software Developer and B.Tech Computer Science student with a strong interest in building modern, scalable, and user-focused web applications. I have a solid foundation in front-end and back-end technologies and enjoy turning ideas into practical digital solutions. Through academic learning and hands-on projects, I continuously work on improving my problem-solving skills, code quality, and understanding of real-world software development. I am eager to learn, grow, and contribute to meaningful projects as a developer.
             </motion.p>
@@ -270,7 +335,7 @@ export default function Home() {
                   link.click();
                   document.body.removeChild(link);
                 }}
-                className="inline-block border border-white px-8 py-3 hover:bg-white hover:text-black transition-all duration-300"
+                className={`inline-block border ${isDark ? 'border-white hover:bg-white hover:text-black' : 'border-black hover:bg-black hover:text-white'} px-8 py-3 transition-all duration-300`}
               >
                 📄 Download Resume
               </button>
@@ -280,7 +345,7 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 px-6 bg-gray-900/20">
+      <section id="skills" className={`py-20 px-6 ${isDark ? 'bg-gray-900/20' : 'bg-gray-100/50'}`}>
         <div className="max-w-4xl mx-auto">
           <motion.div
             variants={staggerContainer}
@@ -302,7 +367,7 @@ export default function Home() {
                 <motion.div
                   key={skill}
                   variants={fadeInUp}
-                  className="border border-gray-600 px-4 py-3 text-center hover:border-white transition-colors duration-300"
+                  className={`border ${isDark ? 'border-gray-600 hover:border-white' : 'border-gray-300 hover:border-black'} px-4 py-3 text-center transition-colors duration-300`}
                 >
                   {skill}
                 </motion.div>
@@ -335,22 +400,22 @@ export default function Home() {
                 <motion.div
                   key={project.title}
                   variants={fadeInUp}
-                  className="border border-gray-600 p-6 hover:border-white transition-all duration-300 group"
+                  className={`border ${isDark ? 'border-gray-600 hover:border-white' : 'border-gray-300 hover:border-black'} p-6 transition-all duration-300 group`}
                 >
                   <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-semibold group-hover:text-gray-300 transition-colors">
+                    <h3 className={`text-xl font-semibold ${isDark ? 'group-hover:text-gray-300' : 'group-hover:text-gray-700'} transition-colors`}>
                       {project.title}
                     </h3>
-                    <span className="text-gray-400 text-sm">{project.year}</span>
+                    <span className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm`}>{project.year}</span>
                   </div>
-                  <p className="text-gray-400 text-sm mb-4">{project.tech}</p>
-                  <p className="text-gray-400 leading-relaxed mb-4">{project.description}</p>
+                  <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm mb-4`}>{project.tech}</p>
+                  <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} leading-relaxed mb-4`}>{project.description}</p>
                   <div className="text-center">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 rounded-lg border border-gray-600 hover:border-white hover:bg-white hover:text-black transition-all duration-300 text-sm"
+                      className={`inline-flex items-center px-4 py-2 rounded-lg border ${isDark ? 'border-gray-600 hover:border-white hover:bg-white hover:text-black' : 'border-gray-300 hover:border-black hover:bg-black hover:text-white'} transition-all duration-300 text-sm`}
                     >
                       <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.652.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -388,7 +453,7 @@ export default function Home() {
                 <img 
                   src="https://github-readme-stats.vercel.app/api?username=Tanupanchal26&show_icons=true&theme=dark&bg_color=0d1117&text_color=c9d1d9&icon_color=58a6ff&title_color=f0f6fc&border_color=30363d&hide_border=false" 
                   alt="GitHub Statistics" 
-                  className="border border-gray-600 rounded-lg hover:border-white transition-all duration-300"
+                  className={`border ${isDark ? 'border-gray-600' : 'border-gray-300'} rounded-lg ${isDark ? 'hover:border-white' : 'hover:border-black'} transition-all duration-300`}
                 />
               </div>
             </motion.div>
@@ -400,7 +465,7 @@ export default function Home() {
                 <img 
                   src="https://github-readme-activity-graph.vercel.app/graph?username=Tanupanchal26&bg_color=0d1117&color=c9d1d9&line=58a6ff&point=f0f6fc&area=true&hide_border=false&border_color=30363d" 
                   alt="Contribution Graph" 
-                  className="border border-gray-600 rounded-lg hover:border-white transition-all duration-300 w-full max-w-5xl h-auto"
+                  className={`border ${isDark ? 'border-gray-600' : 'border-gray-300'} rounded-lg ${isDark ? 'hover:border-white' : 'hover:border-black'} transition-all duration-300 w-full max-w-5xl h-auto`}
                 />
               </div>
             </motion.div>
@@ -413,14 +478,14 @@ export default function Home() {
                   <img 
                     src="https://github-readme-stats.vercel.app/api/top-langs/?username=Tanupanchal26&layout=compact&theme=dark&bg_color=0d1117&text_color=c9d1d9&title_color=f0f6fc&border_color=30363d&hide_border=false" 
                     alt="Top Languages" 
-                    className="border border-gray-600 rounded-lg hover:border-white transition-all duration-300"
+                    className={`border ${isDark ? 'border-gray-600' : 'border-gray-300'} rounded-lg ${isDark ? 'hover:border-white' : 'hover:border-black'} transition-all duration-300`}
                   />
                 </div>
                 <div className="flex justify-center">
                   <img 
                     src="https://github-readme-streak-stats.herokuapp.com/?user=Tanupanchal26&theme=dark&background=0d1117&border=30363d&stroke=c9d1d9&ring=58a6ff&fire=58a6ff&currStreakNum=f0f6fc&sideNums=c9d1d9&currStreakLabel=c9d1d9&sideLabels=c9d1d9&dates=c9d1d9&hide_border=false" 
                     alt="GitHub Streak" 
-                    className="border border-gray-600 rounded-lg hover:border-white transition-all duration-300"
+                    className={`border ${isDark ? 'border-gray-600' : 'border-gray-300'} rounded-lg ${isDark ? 'hover:border-white' : 'hover:border-black'} transition-all duration-300`}
                   />
                 </div>
               </div>
@@ -431,21 +496,21 @@ export default function Home() {
                   <img 
                     src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Tanupanchal26&theme=github_dark" 
                     alt="Profile Details" 
-                    className="border border-gray-600 rounded-lg hover:border-white transition-all duration-300 w-full"
+                    className={`border ${isDark ? 'border-gray-600' : 'border-gray-300'} rounded-lg ${isDark ? 'hover:border-white' : 'hover:border-black'} transition-all duration-300 w-full`}
                   />
                 </div>
                 <div className="flex justify-center">
                   <img 
                     src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Tanupanchal26&theme=github_dark" 
                     alt="Repos per Language" 
-                    className="border border-gray-600 rounded-lg hover:border-white transition-all duration-300"
+                    className={`border ${isDark ? 'border-gray-600' : 'border-gray-300'} rounded-lg ${isDark ? 'hover:border-white' : 'hover:border-black'} transition-all duration-300`}
                   />
                 </div>
                 <div className="flex justify-center">
                   <img 
                     src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Tanupanchal26&theme=github_dark" 
                     alt="Most Commit Language" 
-                    className="border border-gray-600 rounded-lg hover:border-white transition-all duration-300"
+                    className={`border ${isDark ? 'border-gray-600' : 'border-gray-300'} rounded-lg ${isDark ? 'hover:border-white' : 'hover:border-black'} transition-all duration-300`}
                   />
                 </div>
               </div>
@@ -455,14 +520,14 @@ export default function Home() {
                   <img 
                     src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Tanupanchal26&theme=github_dark" 
                     alt="Stats" 
-                    className="border border-gray-600 rounded-lg hover:border-white transition-all duration-300"
+                    className={`border ${isDark ? 'border-gray-600' : 'border-gray-300'} rounded-lg ${isDark ? 'hover:border-white' : 'hover:border-black'} transition-all duration-300`}
                   />
                 </div>
                 <div className="flex justify-center">
                   <img 
                     src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Tanupanchal26&theme=github_dark&utcOffset=5.5" 
                     alt="Productive Time" 
-                    className="border border-gray-600 rounded-lg hover:border-white transition-all duration-300"
+                    className={`border ${isDark ? 'border-gray-600' : 'border-gray-300'} rounded-lg ${isDark ? 'hover:border-white' : 'hover:border-black'} transition-all duration-300`}
                   />
                 </div>
               </div>
@@ -475,26 +540,26 @@ export default function Home() {
               {/* GitHub Stats Cards */}
               <motion.div
                 variants={fadeInUp}
-                className="border border-gray-600 p-6 text-center hover:border-white transition-all duration-300"
+                className={`border ${isDark ? 'border-gray-600' : 'border-gray-300'} p-6 text-center ${isDark ? 'hover:border-white' : 'hover:border-black'} transition-all duration-300`}
               >
                 <h3 className="text-2xl font-bold text-green-400 mb-2">15+</h3>
-                <p className="text-gray-400">Public Repositories</p>
+                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Public Repositories</p>
               </motion.div>
               
               <motion.div
                 variants={fadeInUp}
-                className="border border-gray-600 p-6 text-center hover:border-white transition-all duration-300"
+                className={`border ${isDark ? 'border-gray-600' : 'border-gray-300'} p-6 text-center ${isDark ? 'hover:border-white' : 'hover:border-black'} transition-all duration-300`}
               >
                 <h3 className="text-2xl font-bold text-green-400 mb-2">JavaScript</h3>
-                <p className="text-gray-400">Primary Language</p>
+                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Primary Language</p>
               </motion.div>
               
               <motion.div
                 variants={fadeInUp}
-                className="border border-gray-600 p-6 text-center hover:border-white transition-all duration-300"
+                className={`border ${isDark ? 'border-gray-600' : 'border-gray-300'} p-6 text-center ${isDark ? 'hover:border-white' : 'hover:border-black'} transition-all duration-300`}
               >
                 <h3 className="text-2xl font-bold text-green-400 mb-2">Active</h3>
-                <p className="text-gray-400">Developer Status</p>
+                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Developer Status</p>
               </motion.div>
             </motion.div>
 
@@ -505,7 +570,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
-                className="inline-flex items-center border border-white px-8 py-3 hover:bg-white hover:text-black transition-all duration-300"
+                className={`inline-flex items-center border ${isDark ? 'border-white hover:bg-white hover:text-black' : 'border-black hover:bg-black hover:text-white'} px-8 py-3 transition-all duration-300`}
               >
                 <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.652.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -518,7 +583,7 @@ export default function Home() {
       </section>
 
       {/* Certificates Section */}
-      <section id="certificates" className="py-20 px-6 bg-gray-900/20">
+      <section id="certificates" className={`py-20 px-6 ${isDark ? 'bg-gray-900/20' : 'bg-gray-100/50'}`}>
         <div className="max-w-6xl mx-auto">
           <motion.div
             variants={staggerContainer}
@@ -540,12 +605,12 @@ export default function Home() {
               {/* Deloitte Certificate */}
               <motion.div
                 variants={fadeInUp}
-                className="flex items-center justify-between p-6 border border-gray-600 rounded-lg hover:border-white transition-all duration-300 group"
+                className={`flex items-center justify-between p-6 border ${isDark ? 'border-gray-600 hover:border-white' : 'border-gray-300 hover:border-black'} rounded-lg transition-all duration-300 group`}
               >
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-gray-300 transition-colors">Technology Job Simulation</h3>
-                  <p className="text-gray-400 text-sm mb-1">Deloitte Australia</p>
-                  <span className="text-gray-500 text-sm">2025</span>
+                  <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'group-hover:text-gray-300' : 'group-hover:text-gray-700'} transition-colors`}>Technology Job Simulation</h3>
+                  <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm mb-1`}>Deloitte Australia</p>
+                  <span className={`${isDark ? 'text-gray-500' : 'text-gray-500'} text-sm`}>2025</span>
                 </div>
                 <button
                   onClick={() => {
@@ -654,7 +719,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 bg-gray-900/20">
+      <section id="contact" className={`py-20 px-6 ${isDark ? 'bg-gray-900/20' : 'bg-gray-100/50'}`}>
         <div className="max-w-6xl mx-auto">
           <motion.div
             variants={staggerContainer}
@@ -670,7 +735,7 @@ export default function Home() {
             </motion.h2>
             <motion.p 
               variants={fadeInUp}
-              className="text-lg text-gray-400 mb-16 text-center max-w-2xl mx-auto"
+              className={`text-lg ${isDark ? 'text-gray-400' : 'text-gray-600'} mb-16 text-center max-w-2xl mx-auto`}
             >
               Let's connect and discuss opportunities. I'm always open to new projects and collaborations.
             </motion.p>
@@ -846,9 +911,9 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 border-t border-gray-600">
+      <footer className={`py-8 px-6 border-t ${isDark ? 'border-gray-600' : 'border-gray-300'}`}>
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-gray-400">
+          <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
             © 2026 Tanya Panchal. All rights reserved.
           </p>
         </div>
