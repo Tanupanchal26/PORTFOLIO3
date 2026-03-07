@@ -147,7 +147,7 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
                 className={`p-2 rounded transition-all duration-300 group relative ${
                   activeSection === item.id
-                    ? isDark ? 'bg-green-500/20 text-green-400' : 'bg-green-500/20 text-green-600'
+                    ? isDark ? 'bg-white/20 text-white' : 'bg-black/20 text-black'
                     : isDark ? 'hover:bg-gray-800 text-gray-400' : 'hover:bg-gray-100 text-gray-600'
                 }`}
               >
