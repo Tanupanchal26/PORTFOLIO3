@@ -390,7 +390,7 @@ export default function Home() {
                 />
               </div>
               
-              <div className="grid md:grid-cols-2 gap-6 mb-8 max-w-3xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-8 mb-10 max-w-2xl mx-auto">
                 <div className="flex justify-center">
                   <img 
                     src={isDark ? "https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Tanupanchal26&theme=tokyonight" : "https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Tanupanchal26&theme=default"}
@@ -407,7 +407,7 @@ export default function Home() {
                 </div>
               </div>
               
-              <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
                 <div className="flex justify-center">
                   <img 
                     src={isDark ? "https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Tanupanchal26&theme=tokyonight" : "https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Tanupanchal26&theme=default"}
