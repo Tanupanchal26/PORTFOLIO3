@@ -256,10 +256,7 @@ export default function Home() {
               variants={fadeInUp}
               className="text-lg md:text-xl leading-relaxed text-gray-400 text-center max-w-3xl mx-auto mb-12"
             >
-              Passionate and driven B.Tech 2nd-year student with a keen interest in Software Development, 
-              UI/UX design, and competitive programming. Strong foundation in front-end and back-end technologies, 
-              version control systems, and problem-solving. Eager to learn, innovate, and apply my skills to 
-              real-world projects while continuously improving as a developer.
+              I am a passionate Software Developer and B.Tech Computer Science student with a strong interest in building modern, scalable, and user-focused web applications. I have a solid foundation in front-end and back-end technologies and enjoy turning ideas into practical digital solutions. Through academic learning and hands-on projects, I continuously work on improving my problem-solving skills, code quality, and understanding of real-world software development. I am eager to learn, grow, and contribute to meaningful projects as a developer.
             </motion.p>
             
             <div className="text-center mt-12">
