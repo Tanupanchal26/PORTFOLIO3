@@ -129,18 +129,6 @@ export default function GitHubSection({ username, isDark }: { username: string; 
             </div>
           </motion.div>
 
-          {/* Contribution Graph */}
-          <motion.div variants={fadeInUp} className="mb-12">
-            <h3 className="text-2xl font-semibold mb-8 text-center text-white">📊 Contribution Graph</h3>
-            <div className="flex justify-center">
-              <img 
-                src={`https://github-readme-activity-graph.vercel.app/graph?username=${username}&bg_color=0d1117&color=c9d1d9&line=3fb950&point=39d353&area=true&hide_border=false&border_color=30363d&area_color=0e4429`}
-                alt="Contribution Graph" 
-                className="border border-[#30363d] rounded-lg w-full max-w-5xl"
-              />
-            </div>
-          </motion.div>
-
           {/* Top Repositories */}
           <motion.div variants={fadeInUp} className="mb-12">
             <h3 className="text-2xl font-semibold mb-8 text-center text-white">📦 Top Repositories</h3>
