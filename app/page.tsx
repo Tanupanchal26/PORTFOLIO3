@@ -122,14 +122,14 @@ export default function Home() {
         transition={{ duration: 0.3 }}
         className={`fixed top-0 left-0 right-0 z-50 ${isDark ? 'bg-[#000000]/90' : 'bg-[#FFFFFF]/90'} backdrop-blur-sm border-b ${isDark ? 'border-[#1F1F1F]' : 'border-[#E5E7EB]'}`}
       >
-        <div className="flex items-center justify-between px-6 py-4">
+        <div className="flex items-center justify-between px-2 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4">
           {/* Name on Left */}
-          <div className="text-base font-bold ml-28">
+          <div className="text-xs sm:text-sm md:text-base font-bold ml-2 sm:ml-8 md:ml-28 leading-none">
             TANYA
           </div>
           
           {/* Navigation Icons in Center */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-8">
+          <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-1 sm:space-x-3 md:space-x-8">
             {[
               { id: 'hero', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6', label: 'Home' },
               { id: 'about', icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z', label: 'About' },
@@ -146,14 +146,14 @@ export default function Home() {
                   if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' })
                 }}
                 whileTap={{ scale: 0.95 }}
-                className={`ui-btn p-2 rounded transition-all duration-300 group relative ${
+                className={`ui-btn p-1 sm:p-1.5 md:p-2 rounded transition-all duration-300 group relative ${
                   activeSection === item.id
                     ? isDark ? 'bg-[#111111] text-[#FFFFFF]' : 'bg-[#F9FAFB] text-[#111827]'
                     : isDark ? 'text-[#B3B3B3]' : 'text-[#4B5563]'
                 }`}
               >
                 <svg
-                  className="w-4 h-4"
+                  className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4"
                   fill={item.fill ? 'currentColor' : 'none'}
                   stroke={item.fill ? 'none' : 'currentColor'}
                   viewBox="0 0 24 24"
@@ -169,18 +169,18 @@ export default function Home() {
           </div>
           
           {/* Theme Toggle on Right */}
-          <div className="mr-24">
+          <div className="mr-2 sm:mr-8 md:mr-24">
             <motion.button
               onClick={() => setIsDark(!isDark)}
               whileTap={{ scale: 0.95 }}
-              className={`ui-btn p-2 rounded transition-all duration-300 group relative ${isDark ? 'bg-[#000000] text-[#FFFFFF]' : 'bg-[#FFFFFF] text-[#111827]'}`}
+              className={`ui-btn p-1 sm:p-1.5 md:p-2 rounded transition-all duration-300 group relative ${isDark ? 'bg-[#000000] text-[#FFFFFF]' : 'bg-[#FFFFFF] text-[#111827]'}`}
             >
             {isDark ? (
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" />
               </svg>
             ) : (
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
               </svg>
             )}
