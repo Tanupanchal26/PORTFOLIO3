@@ -329,7 +329,7 @@ export default function Home() {
                 <motion.div
                   key={project.title}
                   variants={fadeInUp}
-                  className={`project-card border ${isDark ? 'border-[#1F1F1F] bg-[#000000] hover:border-[#9CA3AF]' : 'border-[#E5E7EB] bg-[#FFFFFF] hover:border-[#9CA3AF]'} p-6 transition-all duration-300 ease-out group`}
+                  className={`project-card border ${isDark ? 'border-[#1F1F1F] bg-[#000000] hover:border-[#9CA3AF]' : 'border-[#E5E7EB] bg-[#FFFFFF] hover:border-[#D1D5DB]'} p-6 transition-all duration-300 ease-out group`}
                 >
                   <div className="flex justify-between items-start mb-4">
                     <h3 className={`project-card-title text-xl font-semibold ${isDark ? 'text-[#FFFFFF]' : 'text-[#111827]'} transition-colors duration-300`}>
@@ -765,37 +765,37 @@ export default function Home() {
                   className="space-y-6"
                 >
                   <motion.div variants={fadeInUp}>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                    <label htmlFor="name" className={`block text-sm font-medium mb-2 ${isDark ? 'text-gray-300' : 'text-black'}`}>Name</label>
                     <input
                       type="text"
                       id="name"
                       name="name"
                       required
-                      className={`w-full bg-transparent border ${isDark ? 'border-gray-600 focus:border-white' : 'border-gray-300 focus:border-gray-400'} rounded px-4 py-3 ${isDark ? 'text-white placeholder-gray-500' : 'text-gray-900 placeholder-gray-400'} focus:outline-none transition-all duration-300`}
+                      className={`w-full bg-transparent border ${isDark ? 'border-gray-600 focus:border-white' : 'border-black focus:border-black'} rounded px-4 py-3 ${isDark ? 'text-white placeholder-gray-500' : 'text-gray-900 placeholder-gray-400'} focus:outline-none transition-all duration-300`}
                       placeholder="Your full name"
                     />
                   </motion.div>
                   
                   <motion.div variants={fadeInUp}>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                    <label htmlFor="email" className={`block text-sm font-medium mb-2 ${isDark ? 'text-gray-300' : 'text-black'}`}>Email</label>
                     <input
                       type="email"
                       id="email"
                       name="email"
                       required
-                      className={`w-full bg-transparent border ${isDark ? 'border-gray-600 focus:border-white' : 'border-gray-300 focus:border-gray-400'} rounded px-4 py-3 ${isDark ? 'text-white placeholder-gray-500' : 'text-gray-900 placeholder-gray-400'} focus:outline-none transition-all duration-300`}
+                      className={`w-full bg-transparent border ${isDark ? 'border-gray-600 focus:border-white' : 'border-black focus:border-black'} rounded px-4 py-3 ${isDark ? 'text-white placeholder-gray-500' : 'text-gray-900 placeholder-gray-400'} focus:outline-none transition-all duration-300`}
                       placeholder="your.email@example.com"
                     />
                   </motion.div>
                   
                   <motion.div variants={fadeInUp}>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                    <label htmlFor="message" className={`block text-sm font-medium mb-2 ${isDark ? 'text-gray-300' : 'text-black'}`}>Message</label>
                     <textarea
                       id="message"
                       name="message"
                       required
                       rows={5}
-                      className={`w-full bg-transparent border ${isDark ? 'border-gray-600 focus:border-white' : 'border-gray-300 focus:border-gray-400'} rounded px-4 py-3 ${isDark ? 'text-white placeholder-gray-500' : 'text-gray-900 placeholder-gray-400'} focus:outline-none transition-all duration-300 resize-none`}
+                      className={`w-full bg-transparent border ${isDark ? 'border-gray-600 focus:border-white' : 'border-black focus:border-black'} rounded px-4 py-3 ${isDark ? 'text-white placeholder-gray-500' : 'text-gray-900 placeholder-gray-400'} focus:outline-none transition-all duration-300 resize-none`}
                       placeholder="Tell me about your project or opportunity..."
                     ></textarea>
                   </motion.div>
