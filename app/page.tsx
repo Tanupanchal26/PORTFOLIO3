@@ -168,7 +168,7 @@ export default function Home() {
           </div>
           
           {/* Theme Toggle on Right */}
-          <div className="mr-16">
+          <div className="mr-24">
             <motion.button
               onClick={() => setIsDark(!isDark)}
               whileHover={{ scale: 1.15 }}
