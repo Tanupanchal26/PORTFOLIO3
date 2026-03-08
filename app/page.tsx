@@ -208,7 +208,7 @@ export default function Home() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <motion.h1 
-            className="text-[2rem] sm:text-[2.6rem] md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-5 md:mb-6 tracking-tight"
+            className="text-[2.35rem] sm:text-[2.9rem] md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-5 md:mb-6 tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -216,7 +216,7 @@ export default function Home() {
             Hi, I'm Tanya Panchal
           </motion.h1>
           <motion.p 
-            className={`text-base sm:text-lg md:text-xl lg:text-2xl ${isDark ? 'text-[#B3B3B3]' : 'text-[#4B5563]'} mb-6 sm:mb-7 md:mb-8`}
+            className={`text-lg sm:text-xl md:text-xl lg:text-2xl ${isDark ? 'text-[#B3B3B3]' : 'text-[#4B5563]'} mb-6 sm:mb-7 md:mb-8`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -231,7 +231,7 @@ export default function Home() {
           >
             <a 
               href="#about" 
-              className={`ui-btn inline-block border px-5 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 transition-all duration-300 ease-out ${isDark ? 'bg-black text-white border-[#1F1F1F]' : 'bg-white text-[#111827] border-black'}`}
+              className={`ui-btn inline-block border text-base sm:text-lg md:text-base px-6 sm:px-7 md:px-8 py-2.5 sm:py-3 md:py-3 transition-all duration-300 ease-out ${isDark ? 'bg-black text-white border-[#1F1F1F]' : 'bg-white text-[#111827] border-black'}`}
             >
               Learn More
             </a>
