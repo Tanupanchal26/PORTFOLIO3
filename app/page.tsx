@@ -230,7 +230,7 @@ export default function Home() {
           >
             <a 
               href="#about" 
-              className={`ui-btn inline-block border px-8 py-3 transition-all duration-300 ease-out ${isDark ? 'border-[#1F1F1F]' : 'border-[#E5E7EB]'}`}
+              className={`ui-btn inline-block border px-8 py-3 transition-all duration-300 ease-out bg-black text-white ${isDark ? 'border-[#1F1F1F]' : 'border-black'}`}
             >
               Learn More
             </a>
