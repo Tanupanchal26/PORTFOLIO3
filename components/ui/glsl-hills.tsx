@@ -10,6 +10,11 @@ type GLSLHillsProps = {
 
 export function GLSLHills({ className = '', isDark = true }: GLSLHillsProps) {
   const mountRef = useRef<HTMLDivElement | null>(null)
+  const themeRef = useRef(isDark)
+
+  useEffect(() => {
+    themeRef.current = isDark
+  }, [isDark])
 
   useEffect(() => {
     const mount = mountRef.current
@@ -21,11 +26,12 @@ export function GLSLHills({ className = '', isDark = true }: GLSLHillsProps) {
     const isMobile =
       window.matchMedia('(max-width: 768px)').matches ||
       navigator.maxTouchPoints > 0
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
     const getPixelRatio = () => {
-      const base = window.devicePixelRatio || 1
-      if (isMobile) return Math.min(base, 1.2)
-      return Math.min(base, 1.8)
+      const dpr = window.devicePixelRatio || 1
+      if (isMobile) return Math.min(dpr, 1.15)
+      return Math.min(dpr, 1.6)
     }
 
     const renderer = new THREE.WebGLRenderer({
@@ -45,8 +51,8 @@ export function GLSLHills({ className = '', isDark = true }: GLSLHillsProps) {
     const geometry = new THREE.PlaneGeometry(2, 2)
     const uniforms = {
       uTime: { value: 0 },
-      uResolution: { value: new THREE.Vector2(mount.clientWidth, mount.clientHeight) },
-      uTheme: { value: isDark ? 1.0 : 0.0 },
+      uResolution: { value: new THREE.Vector2(Math.max(mount.clientWidth, 1), Math.max(mount.clientHeight, 1)) },
+      uTheme: { value: themeRef.current ? 1.0 : 0.0 },
     }
 
     const material = new THREE.ShaderMaterial({
@@ -122,34 +128,39 @@ export function GLSLHills({ className = '', isDark = true }: GLSLHillsProps) {
     const mesh = new THREE.Mesh(geometry, material)
     scene.add(mesh)
 
-    const onResize = () => {
-      if (!mount) return
+    const resize = () => {
+      const width = Math.max(mount.clientWidth, 1)
+      const height = Math.max(mount.clientHeight, 1)
       renderer.setPixelRatio(getPixelRatio())
-      renderer.setSize(mount.clientWidth, mount.clientHeight, false)
-      uniforms.uResolution.value.set(mount.clientWidth, mount.clientHeight)
+      renderer.setSize(width, height, false)
+      uniforms.uResolution.value.set(width, height)
     }
 
-    window.addEventListener('resize', onResize)
+    const resizeObserver = new ResizeObserver(resize)
+    resizeObserver.observe(mount)
+    window.addEventListener('resize', resize)
 
     let raf = 0
     let lastFrame = 0
-    const frameStep = isMobile ? 1000 / 30 : 1000 / 60
+    const targetFps = prefersReducedMotion ? 20 : isMobile ? 30 : 60
+    const frameStep = 1000 / targetFps
 
-    const animate = (time: number) => {
+    const animate = (now: number) => {
       raf = window.requestAnimationFrame(animate)
-      if (time - lastFrame < frameStep) return
+      if (now - lastFrame < frameStep) return
 
-      lastFrame = time
-      uniforms.uTime.value = time * 0.001
-      uniforms.uTheme.value = isDark ? 1.0 : 0.0
+      lastFrame = now
+      uniforms.uTime.value = now * 0.001
+      uniforms.uTheme.value = themeRef.current ? 1.0 : 0.0
       renderer.render(scene, camera)
     }
 
     raf = window.requestAnimationFrame(animate)
 
     return () => {
-      window.removeEventListener('resize', onResize)
       window.cancelAnimationFrame(raf)
+      window.removeEventListener('resize', resize)
+      resizeObserver.disconnect()
       scene.remove(mesh)
       geometry.dispose()
       material.dispose()
@@ -159,7 +170,7 @@ export function GLSLHills({ className = '', isDark = true }: GLSLHillsProps) {
         mount.removeChild(renderer.domElement)
       }
     }
-  }, [isDark])
+  }, [])
 
   return <div ref={mountRef} className={`h-full w-full ${className}`} aria-hidden="true" />
 }
