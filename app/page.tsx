@@ -393,7 +393,7 @@ export default function Home() {
                 <motion.img
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
-                  src={isDark ? "https://raw.githubusercontent.com/Tanupanchal26/Tanupanchal26/output/pacman-contribution-graph-dark.svg" : "https://raw.githubusercontent.com/Tanupanchal26/Tanupanchal26/output/pacman-contribution-graph.svg"}
+                  src="https://raw.githubusercontent.com/Tanupanchal26/Tanupanchal26/output/pacman-contribution-graph-dark.svg"
                   alt="Pacman Contribution Graph" 
                   className={`${isDark ? 'border-2 border-black' : 'border border-gray-300'} rounded transition-all duration-300 w-full max-w-5xl h-auto cursor-pointer`}
                 />
@@ -408,7 +408,7 @@ export default function Home() {
                 <motion.img
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
-                  src={isDark ? "https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Tanupanchal26&theme=tokyonight" : "https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Tanupanchal26&theme=default"}
+                  src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Tanupanchal26&theme=tokyonight"
                   alt="Profile Details" 
                   className={`${isDark ? 'border-2 border-black' : 'border border-gray-300'} rounded transition-all duration-300 w-full max-w-3xl cursor-pointer`}
                 />
@@ -419,7 +419,7 @@ export default function Home() {
                   <motion.img
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
-                    src={isDark ? "https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Tanupanchal26&theme=tokyonight" : "https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Tanupanchal26&theme=default"}
+                    src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Tanupanchal26&theme=tokyonight"
                     alt="Repos per Language" 
                     className={`${isDark ? 'border-2 border-black' : 'border border-gray-300'} rounded transition-all duration-300 w-full cursor-pointer`}
                   />
@@ -428,7 +428,7 @@ export default function Home() {
                   <motion.img
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
-                    src={isDark ? "https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Tanupanchal26&theme=tokyonight" : "https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Tanupanchal26&theme=default"}
+                    src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Tanupanchal26&theme=tokyonight"
                     alt="Most Commit Language" 
                     className={`${isDark ? 'border-2 border-black' : 'border border-gray-300'} rounded transition-all duration-300 w-full cursor-pointer`}
                   />
@@ -440,7 +440,7 @@ export default function Home() {
                   <motion.img
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
-                    src={isDark ? "https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Tanupanchal26&theme=tokyonight" : "https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Tanupanchal26&theme=default"}
+                    src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Tanupanchal26&theme=tokyonight"
                     alt="Stats" 
                     className={`${isDark ? 'border-2 border-black' : 'border border-gray-300'} rounded transition-all duration-300 w-full cursor-pointer`}
                   />
@@ -449,7 +449,7 @@ export default function Home() {
                   <motion.img
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
-                    src={isDark ? "https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Tanupanchal26&theme=tokyonight&utcOffset=5.5" : "https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Tanupanchal26&theme=default&utcOffset=5.5"}
+                    src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Tanupanchal26&theme=tokyonight&utcOffset=5.5"
                     alt="Productive Time" 
                     className={`${isDark ? 'border-2 border-black' : 'border border-gray-300'} rounded transition-all duration-300 w-full cursor-pointer`}
                   />
