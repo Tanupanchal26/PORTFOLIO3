@@ -464,31 +464,31 @@ export default function Home() {
             
             <motion.div 
               variants={staggerContainer}
-              className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-4 md:gap-6 mb-12"
+              className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-12"
             >
               {/* GitHub Stats Cards */}
               <motion.div
                 variants={fadeInUp}
-                className={`border ${isDark ? 'border-[#1F1F1F] bg-[#000000] hover:border-[#9CA3AF]' : 'border-[#E5E7EB] bg-[#FFFFFF] hover:border-[#D1D5DB]'} p-2 sm:p-4 md:p-6 text-center transition-all duration-300`}
+                className={`border ${isDark ? 'border-[#1F1F1F] bg-[#000000] hover:border-[#9CA3AF]' : 'border-[#E5E7EB] bg-[#FFFFFF] hover:border-[#D1D5DB]'} w-full p-4 sm:p-4 md:p-6 text-center transition-all duration-300`}
               >
-                <h3 className="text-sm sm:text-lg md:text-2xl font-bold text-[#2ECC71] mb-1 sm:mb-2">15+</h3>
-                <p className={`${isDark ? 'text-[#B3B3B3]' : 'text-[#4B5563]'}`}>Public Repositories</p>
+                <h3 className="text-xl sm:text-xl md:text-2xl font-bold text-[#2ECC71] mb-2">15+</h3>
+                <p className={`text-sm sm:text-sm md:text-base leading-snug whitespace-nowrap ${isDark ? 'text-[#B3B3B3]' : 'text-[#4B5563]'}`}>Public Repositories</p>
               </motion.div>
               
               <motion.div
                 variants={fadeInUp}
-                className={`border ${isDark ? 'border-[#1F1F1F] bg-[#000000] hover:border-[#9CA3AF]' : 'border-[#E5E7EB] bg-[#FFFFFF] hover:border-[#D1D5DB]'} p-2 sm:p-4 md:p-6 text-center transition-all duration-300`}
+                className={`border ${isDark ? 'border-[#1F1F1F] bg-[#000000] hover:border-[#9CA3AF]' : 'border-[#E5E7EB] bg-[#FFFFFF] hover:border-[#D1D5DB]'} w-full p-4 sm:p-4 md:p-6 text-center transition-all duration-300`}
               >
-                <h3 className="text-sm sm:text-lg md:text-2xl font-bold text-[#2ECC71] mb-1 sm:mb-2">JavaScript</h3>
-                <p className={`${isDark ? 'text-[#B3B3B3]' : 'text-[#4B5563]'}`}>Primary Language</p>
+                <h3 className="text-xl sm:text-xl md:text-2xl font-bold text-[#2ECC71] mb-2">JavaScript</h3>
+                <p className={`text-sm sm:text-sm md:text-base leading-snug whitespace-nowrap ${isDark ? 'text-[#B3B3B3]' : 'text-[#4B5563]'}`}>Primary Language</p>
               </motion.div>
               
               <motion.div
                 variants={fadeInUp}
-                className={`border ${isDark ? 'border-[#1F1F1F] bg-[#000000] hover:border-[#9CA3AF]' : 'border-[#E5E7EB] bg-[#FFFFFF] hover:border-[#D1D5DB]'} p-2 sm:p-4 md:p-6 text-center transition-all duration-300`}
+                className={`border ${isDark ? 'border-[#1F1F1F] bg-[#000000] hover:border-[#9CA3AF]' : 'border-[#E5E7EB] bg-[#FFFFFF] hover:border-[#D1D5DB]'} w-full p-4 sm:p-4 md:p-6 text-center transition-all duration-300`}
               >
-                <h3 className="text-sm sm:text-lg md:text-2xl font-bold text-[#2ECC71] mb-1 sm:mb-2">Active</h3>
-                <p className={`${isDark ? 'text-[#B3B3B3]' : 'text-[#4B5563]'}`}>Developer Status</p>
+                <h3 className="text-xl sm:text-xl md:text-2xl font-bold text-[#2ECC71] mb-2">Active</h3>
+                <p className={`text-sm sm:text-sm md:text-base leading-snug whitespace-nowrap ${isDark ? 'text-[#B3B3B3]' : 'text-[#4B5563]'}`}>Developer Status</p>
               </motion.div>
             </motion.div>
 
