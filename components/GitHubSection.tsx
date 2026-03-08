@@ -1,4 +1,4 @@
-'use client'
+ga 'use client'
 
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
@@ -106,7 +106,7 @@ export default function GitHubSection({ username, isDark }: { username: string; 
             variants={fadeInUp}
             className="text-4xl md:text-5xl font-bold mb-12 text-center text-white"
           >
-            GitHub Activity
+            🚀 GitHub Activity
           </motion.h2>
 
           {/* Stats Cards */}

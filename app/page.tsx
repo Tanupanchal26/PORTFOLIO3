@@ -123,7 +123,8 @@ export default function Home() {
       >
         <div className="flex items-center justify-between px-6 py-4">
           {/* Name on Left */}
-          <div className="text-xl font-bold">
+          <div className="text-xl font-bold flex items-center gap-2">
+            <span className="text-2xl">👩‍💻</span>
             Tanya Panchal
           </div>
           
