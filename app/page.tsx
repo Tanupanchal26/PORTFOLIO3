@@ -113,13 +113,13 @@ export default function Home() {
   ]
 
   return (
-    <main className={`min-h-screen ${isDark ? 'bg-[#000000] text-white' : 'bg-[#FFFFFF] text-black'}`}>
+    <main data-theme={isDark ? 'dark' : 'light'} className={`min-h-screen ${isDark ? 'bg-[#000000] text-[#FFFFFF]' : 'bg-[#FFFFFF] text-[#111827]'}`}>
       {/* Top Menu Bar */}
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: showHeader ? 0 : -100, opacity: showHeader ? 1 : 0 }}
         transition={{ duration: 0.3 }}
-        className={`fixed top-0 left-0 right-0 z-50 ${isDark ? 'bg-[#000000]/90' : 'bg-[#FFFFFF]/90'} backdrop-blur-sm border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}
+        className={`fixed top-0 left-0 right-0 z-50 ${isDark ? 'bg-[#000000]/90' : 'bg-[#FFFFFF]/90'} backdrop-blur-sm border-b ${isDark ? 'border-[#1F1F1F]' : 'border-[#E5E7EB]'}`}
       >
         <div className="flex items-center justify-between px-6 py-4">
           {/* Name on Left */}
@@ -143,12 +143,11 @@ export default function Home() {
                   const element = document.getElementById(item.id)
                   if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' })
                 }}
-                whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className={`p-2 rounded transition-all duration-300 group relative ${
+                className={`ui-btn p-2 rounded transition-all duration-300 group relative ${
                   activeSection === item.id
-                    ? isDark ? 'bg-white/20 text-white' : 'bg-black/20 text-black'
-                    : isDark ? 'hover:bg-gray-700 text-gray-400' : 'hover:bg-gray-300 text-gray-600'
+                    ? isDark ? 'bg-[#111111] text-[#FFFFFF]' : 'bg-[#F9FAFB] text-[#111827]'
+                    : isDark ? 'text-[#B3B3B3]' : 'text-[#4B5563]'
                 }`}
               >
                 <svg
@@ -160,7 +159,7 @@ export default function Home() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
                 </svg>
-                <span className={`absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 ${isDark ? 'bg-gray-800' : 'bg-gray-700'} text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap`}>
+                <span className={`absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 ${isDark ? 'bg-[#111111]' : 'bg-[#111827]'} text-[#FFFFFF] text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap`}>
                   {item.label}
                 </span>
               </motion.button>
@@ -171,9 +170,8 @@ export default function Home() {
           <div className="mr-24">
             <motion.button
               onClick={() => setIsDark(!isDark)}
-              whileHover={{ scale: 1.15 }}
               whileTap={{ scale: 0.95 }}
-              className={`p-2 rounded transition-all duration-300 group relative ${isDark ? 'bg-[#000000] text-white hover:bg-gray-700' : 'bg-[#FFFFFF] text-black hover:bg-gray-300'}`}
+              className={`ui-btn p-2 rounded transition-all duration-300 group relative ${isDark ? 'bg-[#000000] text-[#FFFFFF]' : 'bg-[#FFFFFF] text-[#111827]'}`}
             >
             {isDark ? (
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -184,7 +182,7 @@ export default function Home() {
                 <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
               </svg>
             )}
-            <span className={`absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 ${isDark ? 'bg-gray-800' : 'bg-gray-700'} text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap`}>
+            <span className={`absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 ${isDark ? 'bg-[#111111]' : 'bg-[#111827]'} text-[#FFFFFF] text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap`}>
               {isDark ? 'Light Theme' : 'Dark Theme'}
             </span>
           </motion.button>
@@ -195,7 +193,7 @@ export default function Home() {
       {/* Main Content */}
       <div className="pt-16">
         {/* Hero Section */}
-        <section id="hero" className="min-h-screen flex items-center justify-center px-6">
+        <section id="hero" className={`min-h-screen flex items-center justify-center px-6 ${isDark ? 'bg-[#000000]' : 'bg-[#FFFFFF]'}`}>
         <motion.div 
           className="text-center max-w-4xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
@@ -211,7 +209,7 @@ export default function Home() {
             Hi, I'm Tanya Panchal
           </motion.h1>
           <motion.p 
-            className={`text-xl md:text-2xl ${isDark ? 'text-gray-400' : 'text-gray-600'} mb-8`}
+            className={`text-xl md:text-2xl ${isDark ? 'text-[#B3B3B3]' : 'text-[#4B5563]'} mb-8`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -226,7 +224,7 @@ export default function Home() {
           >
             <a 
               href="#about" 
-              className={`inline-block border ${isDark ? 'border-white hover:bg-white hover:text-black' : 'border-black hover:bg-black hover:text-white'} px-8 py-3 transition-all duration-300`}
+              className={`ui-btn inline-block border px-8 py-3 transition-all duration-300 ease-out ${isDark ? 'border-[#1F1F1F]' : 'border-[#E5E7EB]'}`}
             >
               Learn More
             </a>
@@ -235,7 +233,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6">
+      <section id="about" className={`py-20 px-6 ${isDark ? 'bg-[#000000]' : 'bg-[#FFFFFF]'}`}>
         <div className="max-w-4xl mx-auto">
           <motion.div
             variants={staggerContainer}
@@ -251,7 +249,7 @@ export default function Home() {
             </motion.h2>
             <motion.p 
               variants={fadeInUp}
-              className={`text-lg md:text-xl leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'} text-center max-w-3xl mx-auto mb-12`}
+              className={`text-lg md:text-xl leading-relaxed ${isDark ? 'text-[#B3B3B3]' : 'text-[#4B5563]'} text-center max-w-3xl mx-auto mb-12`}
             >
               I am a passionate Software Developer and B.Tech Computer Science student with a strong interest in building modern, scalable, and user-focused web applications. I have a solid foundation in front-end and back-end technologies and enjoy turning ideas into practical digital solutions. Through academic learning and hands-on projects, I continuously work on improving my problem-solving skills, code quality, and understanding of real-world software development. I am eager to learn, grow, and contribute to meaningful projects as a developer.
             </motion.p>
@@ -266,7 +264,7 @@ export default function Home() {
                   link.click();
                   document.body.removeChild(link);
                 }}
-                className={`inline-block border ${isDark ? 'border-white hover:bg-white hover:text-black' : 'border-black hover:bg-black hover:text-white'} px-8 py-3 transition-all duration-300`}
+                className={`ui-btn inline-block border px-8 py-3 transition-all duration-300 ease-out ${isDark ? 'border-[#1F1F1F]' : 'border-[#E5E7EB]'}`}
               >
                 📄 Download Resume
               </button>
@@ -276,7 +274,7 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 px-6">
+      <section id="skills" className={`py-20 px-6 ${isDark ? 'bg-[#000000]' : 'bg-[#FFFFFF]'}`}>
         <div className="max-w-4xl mx-auto">
           <motion.div
             variants={staggerContainer}
@@ -298,7 +296,7 @@ export default function Home() {
                 <motion.div
                   key={skill}
                   variants={fadeInUp}
-                  className={`border ${isDark ? 'border-gray-600 hover:border-white' : 'border-gray-300 hover:border-black'} px-4 py-3 text-center transition-colors duration-300`}
+                  className={`border ${isDark ? 'border-[#1F1F1F] bg-[#111111] hover:border-[#D1D5DB]' : 'border-[#E5E7EB] bg-[#FFFFFF] hover:border-[#D1D5DB]'} px-4 py-3 text-center transition-colors duration-300`}
                 >
                   {skill}
                 </motion.div>
@@ -309,7 +307,7 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-6">
+      <section id="projects" className={`py-20 px-6 ${isDark ? 'bg-[#000000]' : 'bg-[#FFFFFF]'}`}>
         <div className="max-w-6xl mx-auto">
           <motion.div
             variants={staggerContainer}
@@ -331,22 +329,22 @@ export default function Home() {
                 <motion.div
                   key={project.title}
                   variants={fadeInUp}
-                  className={`border ${isDark ? 'border-gray-600 hover:border-white' : 'border-gray-300 hover:border-black'} p-6 transition-all duration-300 group`}
+                  className={`project-card border ${isDark ? 'border-[#1F1F1F] bg-[#111111] hover:border-[#9CA3AF]' : 'border-[#E5E7EB] bg-[#FFFFFF] hover:border-[#9CA3AF]'} p-6 transition-all duration-300 ease-out group`}
                 >
                   <div className="flex justify-between items-start mb-4">
-                    <h3 className={`text-xl font-semibold ${isDark ? 'group-hover:text-gray-300' : 'group-hover:text-gray-700'} transition-colors`}>
+                    <h3 className={`project-card-title text-xl font-semibold ${isDark ? 'text-[#FFFFFF]' : 'text-[#111827]'} transition-colors duration-300`}>
                       {project.title}
                     </h3>
-                    <span className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm`}>{project.year}</span>
+                    <span className={`project-card-secondary ${isDark ? 'text-[#B3B3B3]' : 'text-[#4B5563]'} text-sm transition-colors duration-300`}>{project.year}</span>
                   </div>
-                  <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm mb-4`}>{project.tech}</p>
-                  <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} leading-relaxed mb-4`}>{project.description}</p>
+                  <p className={`project-card-secondary ${isDark ? 'text-[#B3B3B3]' : 'text-[#4B5563]'} text-sm mb-4 transition-colors duration-300`}>{project.tech}</p>
+                  <p className={`project-card-secondary ${isDark ? 'text-[#B3B3B3]' : 'text-[#4B5563]'} leading-relaxed mb-4 transition-colors duration-300`}>{project.description}</p>
                   <div className="text-center">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`inline-flex items-center px-4 py-2 rounded border ${isDark ? 'border-gray-600 hover:border-white hover:bg-white hover:text-black' : 'border-gray-300 hover:border-black hover:bg-black hover:text-white'} transition-all duration-300 text-sm`}
+                      className={`ui-btn inline-flex items-center px-4 py-2 rounded border transition-all duration-300 ease-out ${isDark ? 'border-[#1F1F1F]' : 'border-[#E5E7EB]'} text-sm`}
                     >
                       <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.652.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -362,7 +360,7 @@ export default function Home() {
       </section>
 
       {/* GitHub Section */}
-      <section id="github" className="py-20 px-6">
+      <section id="github" className={`py-20 px-6 ${isDark ? 'bg-[#000000]' : 'bg-[#FFFFFF]'}`}>
         <div className="max-w-6xl mx-auto">
           <motion.div
             variants={staggerContainer}
@@ -379,7 +377,7 @@ export default function Home() {
             
             {/* Contribution Graph */}
             <motion.div variants={fadeInUp} className="mb-12">
-              <h3 className={`text-2xl font-semibold mb-8 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}>📊 𝐂𝐨𝐧𝐭𝐫𝐢𝐛𝐮𝐭𝐢𝐨𝐧 𝐆𝐫𝐚𝐩𝐡</h3>
+              <h3 className={`text-2xl font-semibold mb-8 text-center ${isDark ? 'text-[#FFFFFF]' : 'text-[#111827]'}`}>📊 𝐂𝐨𝐧𝐭𝐫𝐢𝐛𝐮𝐭𝐢𝐨𝐧 𝐆𝐫𝐚𝐩𝐡</h3>
               <div className="flex justify-center mb-8">
                 <motion.img
                   whileHover={{ scale: 1.02 }}
@@ -402,7 +400,7 @@ export default function Home() {
 
             {/* GitHub Analytics */}
             <motion.div variants={fadeInUp} className="mb-12">
-              <h3 className={`text-2xl font-semibold mb-8 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}>📈 𝐆𝐢𝐭𝐇𝐮𝐛 𝐀𝐧𝐚𝐥𝐲𝐭𝐢𝐜𝐬</h3>
+              <h3 className={`text-2xl font-semibold mb-8 text-center ${isDark ? 'text-[#FFFFFF]' : 'text-[#111827]'}`}>📈 𝐆𝐢𝐭𝐇𝐮𝐛 𝐀𝐧𝐚𝐥𝐲𝐭𝐢𝐜𝐬</h3>
               
               <div className="flex justify-center mb-8">
                 <motion.img
@@ -464,26 +462,26 @@ export default function Home() {
               {/* GitHub Stats Cards */}
               <motion.div
                 variants={fadeInUp}
-                className={`border ${isDark ? 'border-gray-600' : 'border-gray-300'} p-6 text-center ${isDark ? 'hover:border-white' : 'hover:border-black'} transition-all duration-300`}
+                className={`border ${isDark ? 'border-[#1F1F1F] bg-[#111111] hover:border-[#2ECC71]' : 'border-[#E5E7EB] bg-[#FFFFFF] hover:border-[#2ECC71]'} p-6 text-center transition-all duration-300`}
               >
-                <h3 className="text-2xl font-bold text-green-400 mb-2">15+</h3>
-                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Public Repositories</p>
+                <h3 className="text-2xl font-bold text-[#2ECC71] mb-2">15+</h3>
+                <p className={`${isDark ? 'text-[#B3B3B3]' : 'text-[#4B5563]'}`}>Public Repositories</p>
               </motion.div>
               
               <motion.div
                 variants={fadeInUp}
-                className={`border ${isDark ? 'border-gray-600' : 'border-gray-300'} p-6 text-center ${isDark ? 'hover:border-white' : 'hover:border-black'} transition-all duration-300`}
+                className={`border ${isDark ? 'border-[#1F1F1F] bg-[#111111] hover:border-[#2ECC71]' : 'border-[#E5E7EB] bg-[#FFFFFF] hover:border-[#2ECC71]'} p-6 text-center transition-all duration-300`}
               >
-                <h3 className="text-2xl font-bold text-green-400 mb-2">JavaScript</h3>
-                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Primary Language</p>
+                <h3 className="text-2xl font-bold text-[#2ECC71] mb-2">JavaScript</h3>
+                <p className={`${isDark ? 'text-[#B3B3B3]' : 'text-[#4B5563]'}`}>Primary Language</p>
               </motion.div>
               
               <motion.div
                 variants={fadeInUp}
-                className={`border ${isDark ? 'border-gray-600' : 'border-gray-300'} p-6 text-center ${isDark ? 'hover:border-white' : 'hover:border-black'} transition-all duration-300`}
+                className={`border ${isDark ? 'border-[#1F1F1F] bg-[#111111] hover:border-[#2ECC71]' : 'border-[#E5E7EB] bg-[#FFFFFF] hover:border-[#2ECC71]'} p-6 text-center transition-all duration-300`}
               >
-                <h3 className="text-2xl font-bold text-green-400 mb-2">Active</h3>
-                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Developer Status</p>
+                <h3 className="text-2xl font-bold text-[#2ECC71] mb-2">Active</h3>
+                <p className={`${isDark ? 'text-[#B3B3B3]' : 'text-[#4B5563]'}`}>Developer Status</p>
               </motion.div>
             </motion.div>
 
@@ -493,8 +491,7 @@ export default function Home() {
                 href="https://github.com/Tanupanchal26/Tanupanchal26.git"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                className={`inline-flex items-center border ${isDark ? 'border-white hover:bg-white hover:text-black' : 'border-black hover:bg-black hover:text-white'} px-8 py-3 transition-all duration-300`}
+                className={`ui-btn inline-flex items-center border px-8 py-3 transition-all duration-300 ease-out ${isDark ? 'border-[#1F1F1F]' : 'border-[#E5E7EB]'}`}
               >
                 <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.652.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -541,7 +538,7 @@ export default function Home() {
                   href="https://res.cloudinary.com/dazqanb4h/image/upload/v1771257749/DELOITTE_b2xpfz.jpg"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`ml-6 inline-flex items-center px-4 py-2 rounded border ${isDark ? 'border-gray-600 hover:border-white hover:bg-white hover:text-black' : 'border-gray-300 hover:border-black hover:bg-black hover:text-white'} transition-all duration-300 text-sm`}
+                  className={`ui-btn ml-6 inline-flex items-center px-4 py-2 rounded border transition-all duration-300 ease-out ${isDark ? 'border-gray-600' : 'border-gray-300'} text-sm`}
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -566,7 +563,7 @@ export default function Home() {
                   href="https://res.cloudinary.com/dazqanb4h/image/upload/v1771258036/BCG_rjnby0.jpg"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`ml-6 inline-flex items-center px-4 py-2 rounded border ${isDark ? 'border-gray-600 hover:border-white hover:bg-white hover:text-black' : 'border-gray-300 hover:border-black hover:bg-black hover:text-white'} transition-all duration-300 text-sm`}
+                  className={`ui-btn ml-6 inline-flex items-center px-4 py-2 rounded border transition-all duration-300 ease-out ${isDark ? 'border-gray-600' : 'border-gray-300'} text-sm`}
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -591,7 +588,7 @@ export default function Home() {
                   href="https://res.cloudinary.com/dazqanb4h/image/upload/v1771257868/google_s7mgni.jpg"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`ml-6 inline-flex items-center px-4 py-2 rounded border ${isDark ? 'border-gray-600 hover:border-white hover:bg-white hover:text-black' : 'border-gray-300 hover:border-black hover:bg-black hover:text-white'} transition-all duration-300 text-sm`}
+                  className={`ui-btn ml-6 inline-flex items-center px-4 py-2 rounded border transition-all duration-300 ease-out ${isDark ? 'border-gray-600' : 'border-gray-300'} text-sm`}
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -616,7 +613,7 @@ export default function Home() {
                   href="https://res.cloudinary.com/dazqanb4h/image/upload/v1771257944/AWS_hnbxzx.jpg"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`ml-6 inline-flex items-center px-4 py-2 rounded border ${isDark ? 'border-gray-600 hover:border-white hover:bg-white hover:text-black' : 'border-gray-300 hover:border-black hover:bg-black hover:text-white'} transition-all duration-300 text-sm`}
+                  className={`ui-btn ml-6 inline-flex items-center px-4 py-2 rounded border transition-all duration-300 ease-out ${isDark ? 'border-gray-600' : 'border-gray-300'} text-sm`}
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -806,9 +803,8 @@ export default function Home() {
                   <motion.button
                     variants={fadeInUp}
                     type="submit"
-                    whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`w-full ${isDark ? 'bg-white text-black hover:bg-gray-800 hover:text-white' : 'bg-black text-white hover:bg-gray-200 hover:text-black'} py-3 px-6 rounded font-medium transition-all duration-300 flex items-center justify-center group`}
+                    className={`ui-btn w-full ${isDark ? 'bg-[#111111] text-white border border-[#1F1F1F]' : 'bg-white text-[#111827] border border-[#D1D5DB]'} py-3 px-6 rounded font-medium transition-all duration-300 flex items-center justify-center group`}
                   >
                     <span>Send Message</span>
                     <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -838,11 +834,10 @@ export default function Home() {
           const element = document.getElementById('hero')
           if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' })
         }}
-        whileHover={{ scale: 1.1, boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)' }}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-8 right-8 z-50 w-11 h-11 bg-white rounded-full flex items-center justify-center shadow-lg group"
+        className={`ui-btn fixed bottom-8 right-8 z-50 w-11 h-11 rounded-full flex items-center justify-center shadow-lg group ${isDark ? 'bg-[#111111] text-white border border-[#1F1F1F]' : 'bg-white text-[#111827] border border-[#D1D5DB]'}`}
       >
-        <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
         </svg>
         <span className="absolute top-1/2 -translate-y-1/2 right-full mr-3 bg-gray-700 text-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">

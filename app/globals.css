@@ -32,3 +32,64 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 }
+
+@layer components {
+  .ui-btn {
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .ui-btn:hover {
+    transform: scale(1.04);
+  }
+
+  [data-theme="dark"] .ui-btn:hover {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    color: #000000;
+    box-shadow: none;
+  }
+
+  [data-theme="light"] .ui-btn:hover {
+    background-color: #000000;
+    border-color: #000000;
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  }
+
+  .project-card {
+    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  }
+
+  .project-card:hover {
+    transform: scale(1.02);
+  }
+
+  [data-theme="dark"] .project-card:hover {
+    box-shadow: none;
+  }
+
+  [data-theme="light"] .project-card:hover {
+    box-shadow: none;
+  }
+
+  .project-card-title,
+  .project-card-secondary {
+    transition: color 0.28s ease;
+  }
+
+  [data-theme="dark"] .project-card:hover .project-card-title {
+    color: #e5e7eb;
+  }
+
+  [data-theme="light"] .project-card:hover .project-card-title {
+    color: #d1d5db;
+  }
+
+  [data-theme="dark"] .project-card:hover .project-card-secondary {
+    color: #e5e7eb;
+  }
+
+  [data-theme="light"] .project-card:hover .project-card-secondary {
+    color: #1f2937;
+  }
+}
