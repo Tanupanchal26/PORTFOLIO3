@@ -1,5 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import LenisProvider from '@/components/LenisProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -30,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-black text-white antialiased`}>
-        {children}
+        <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
   )

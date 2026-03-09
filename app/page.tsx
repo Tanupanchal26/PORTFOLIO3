@@ -2,15 +2,17 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { GLSLHills } from '@/components/ui/glsl-hills'
+
+const EASE_OUT_CUBIC = (t: number) => 1 - Math.pow(1 - t, 3)
 
 export default function Home() {
   const [mounted, setMounted] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
   const [isDark, setIsDark] = useState(true)
   const [showHeader, setShowHeader] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
+  const lastScrollYRef = useRef(0)
 
   useEffect(() => {
     setMounted(true)
@@ -20,12 +22,12 @@ export default function Home() {
       const currentScrollY = window.scrollY
       
       // Show header when scrolling up, hide when scrolling down
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      if (currentScrollY > lastScrollYRef.current && currentScrollY > 100) {
         setShowHeader(false)
       } else {
         setShowHeader(true)
       }
-      setLastScrollY(currentScrollY)
+      lastScrollYRef.current = currentScrollY
       
       // Active section detection
       const sections = ['hero', 'about', 'skills', 'projects', 'github', 'certificates', 'contact']
@@ -43,9 +45,9 @@ export default function Home() {
       }
     }
     
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [lastScrollY])
+  }, [])
 
   if (!mounted) return null
 
@@ -114,6 +116,22 @@ export default function Home() {
     }
   ]
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (!element) return
+
+    if (window.__lenis) {
+      window.__lenis.scrollTo(element, {
+        offset: -80,
+        duration: 1.2,
+        easing: EASE_OUT_CUBIC,
+      })
+      return
+    }
+
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   return (
     <main data-theme={isDark ? 'dark' : 'light'} className={`min-h-screen overflow-x-hidden ${isDark ? 'bg-[#000000] text-[#FFFFFF]' : 'bg-[#FFFFFF] text-[#111827]'}`}>
       {/* Top Menu Bar */}
@@ -142,10 +160,7 @@ export default function Home() {
             ].map((item) => (
               <motion.button
                 key={item.id}
-                onClick={() => {
-                  const element = document.getElementById(item.id)
-                  if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                }}
+                onClick={() => scrollToSection(item.id)}
                 whileTap={{ scale: 0.95 }}
                 className={`ui-btn p-1 sm:p-1.5 md:p-2 rounded transition-all duration-300 group relative ${
                   activeSection === item.id
@@ -837,10 +852,7 @@ export default function Home() {
 
       {/* Floating Go to Home Button */}
       <motion.button
-        onClick={() => {
-          const element = document.getElementById('hero')
-          if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }}
+        onClick={() => scrollToSection('hero')}
         whileTap={{ scale: 0.95 }}
         className={`ui-btn fixed bottom-8 right-8 z-50 w-11 h-11 rounded-full flex items-center justify-center shadow-lg group ${isDark ? 'bg-[#111111] text-white border border-[#1F1F1F]' : 'bg-white text-[#111827] border border-[#D1D5DB]'}`}
       >
