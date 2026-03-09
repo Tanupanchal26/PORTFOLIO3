@@ -12,7 +12,7 @@ export const metadata = {
   openGraph: {
     title: 'Tanya Panchal | Software Developer',
     description: 'Portfolio of Tanya Panchal, a passionate B.Tech Computer Science student specializing in software development, UI/UX design, and competitive programming.',
-    url: 'https://tanyapanchal.dev',
+    url: 'https://panchaltanya.dev',
     siteName: 'Tanya Panchal Portfolio',
     type: 'website',
   },
