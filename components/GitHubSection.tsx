@@ -1,7 +1,7 @@
-ga 'use client'
+ 'use client'
 
 import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 
 interface GitHubUser {
   login: string
@@ -63,10 +63,13 @@ export default function GitHubSection({ username, isDark }: { username: string; 
     fetchGitHubData()
   }, [username])
 
-  const fadeInUp = {
+  const fadeInUp: Variants = {
     initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, ease: "easeOut" }
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut' }
+    }
   }
 
   const staggerContainer = {
