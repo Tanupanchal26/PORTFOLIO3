@@ -317,7 +317,7 @@ export default function Home() {
               variants={staggerContainer}
               className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-4"
             >
-              {skills.map((skill, index) => (
+              {skills.map((skill) => (
                 <motion.div
                   key={skill}
                   variants={fadeInUp}
@@ -350,7 +350,7 @@ export default function Home() {
               variants={staggerContainer}
               className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5 md:gap-8"
             >
-              {projects.map((project, index) => (
+              {projects.map((project) => (
                 <motion.div
                   key={project.title}
                   variants={fadeInUp}
