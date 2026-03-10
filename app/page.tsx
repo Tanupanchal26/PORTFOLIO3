@@ -66,9 +66,9 @@ export default function Home() {
   }
 
   const skills = [
-    'JavaScript', 'HTML', 'CSS', 'C', 'C++', 'Java', 
-    'Figma',' Postman', ' VS Code',' Redux','Node.js', 'Express.js', 'MongoDB', 'SQL', 'Redis', 
-    'Git/GitHub', 'React.js', 'Next.js', 'TypeScript','Tailwind CSS'
+    'JavaScript', 'HTML', 'CSS', 'C', 'C++', 'Java',
+    'Figma', 'Postman', 'VS Code', 'Redux', 'Node.js', 'Express.js', 'MongoDB', 'SQL', 'Redis',
+    'Git/GitHub', 'React.js', 'Next.js', 'TypeScript', 'Tailwind CSS', 'ASD'
   ]
 
   const projects = [
